@@ -1,8 +1,8 @@
 import serial
 import csv
 import time
-OUTPUT_MOVEMENT = "flex"
-THRESHOLD = 10
+OUTPUT_MOVEMENT = "leftright"
+TIME_THRESHOLD = 10
 PuertoSerial = serial.Serial(port = '/dev/ttyACM0', baudrate=115200, timeout=1) 
 
 print("Connected")
@@ -16,12 +16,16 @@ print(header)
 writer.writerow(header)  # escribe encabezado
  
 ti = time.perf_counter()
-print("\t> Data gathering began")
-while(tf-ti < THRESHOLD): 
+tf = time.perf_counter()
+print("Initial Time: "+str(ti))
+print("\t> Data gathering began\n")
+sample_counter = 0
+while(tf-ti < TIME_THRESHOLD): 
     input = PuertoSerial.readline().decode('utf-8').replace('\r', "").replace('\n', "")
     input = input.split('\t')
-    #if len(input) == 3:   # avoids missing axes on first reading
-    #    writer.writerow(input)
-    #    print(input)
+    writer.writerow(input)
     tf = time.perf_counter()
-print("\t> Data is available")
+    sample_counter = sample_counter+1
+print("Final  Time: "+str(tf))
+print("Samples: "+str(sample_counter))    
+print("\t> Data is available on" + str(OUTPUT_MOVEMENT))
