@@ -30,7 +30,7 @@ void setup() {
   Serial.println(" Hz");
   Serial.println();
   Serial.println("Gyroscope in degrees/second");
-  Serial.println("X\tY\tZ");
+  Serial.println("gX\tgY\tgZ");
 }
 
 void loop() {

@@ -22,7 +22,7 @@
 #include <tensorflow/lite/schema/schema_generated.h>
 #include <tensorflow/lite/version.h>
 
-#include "model.h"
+#include "gesture_model.tflite"
 
 const float accelerationThreshold = 2.5; // threshold of significant in G's
 const int numSamples = 1174;

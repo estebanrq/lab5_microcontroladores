@@ -7,7 +7,7 @@ PuertoSerial = serial.Serial(port = '/dev/ttyACM0', baudrate=115200, timeout=1)
 
 print("Connected")
 data_rows = []
-header = ['x', 'y', 'z']
+header = ['gX', 'gY', 'gZ']
 # abrir o crear archivo en modo escritura
 f = open(OUTPUT_MOVEMENT+'.csv', 'w', encoding='UTF8')  # nombre de archivo = gesto a grabar
 # create the csv writer
