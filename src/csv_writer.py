@@ -7,9 +7,9 @@ PuertoSerial = serial.Serial(port = '/dev/ttyACM0', baudrate=115200, timeout=1)
 
 print("Connected")
 data_rows = []
-header = ['gX', 'gY', 'gZ']
+header = ['aX', 'aY', 'aZ','gX', 'gY', 'gZ']
 # abrir o crear archivo en modo escritura
-f = open(OUTPUT_MOVEMENT+'.csv', 'w', encoding='UTF8')  # nombre de archivo = gesto a grabar
+f = open('circles.csv', 'w', encoding='UTF8')  # nombre de archivo = gesto a grabar
 # create the csv writer
 writer = csv.writer(f)
 print(header)
@@ -28,4 +28,4 @@ while(tf-ti < TIME_THRESHOLD):
     sample_counter = sample_counter+1
 print("Final  Time: "+str(tf))
 print("Samples: "+str(sample_counter))    
-print("\t> Data is available on" + str(OUTPUT_MOVEMENT))
+print("\t> Data is available on " + str(OUTPUT_MOVEMENT))

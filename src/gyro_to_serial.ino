@@ -30,20 +30,25 @@ void setup() {
   Serial.println(" Hz");
   Serial.println();
   Serial.println("Gyroscope in degrees/second");
-  Serial.println("gX\tgY\tgZ");
+  Serial.println("aX\taY\taZ\tgX\tgY\tgZ");
 }
 
 void loop() {
-  float x, y, z;
+  float aX, aY, aZ, gX, gY, gZ;
+  IMU.readAcceleration(aX, aY, aZ);
+  IMU.readGyroscope(gX, gY, gZ);
 
-  if (IMU.gyroscopeAvailable()) {
-    IMU.readGyroscope(x, y, z);
-
-    Serial.print(x);
-    Serial.print('\t');
-    Serial.print(y);
-    Serial.print('\t');
-    Serial.println(z);
-  }
+    Serial.print(aX);
+    Serial.print(",");
+    Serial.print(aY);
+    Serial.print(",");
+    Serial.print(aZ);
+    Serial.print(",");
+    Serial.print(gX);
+    Serial.print(",");
+    Serial.print(gY);
+    Serial.print(",");
+    Serial.println(gZ);
+  
 
 }
