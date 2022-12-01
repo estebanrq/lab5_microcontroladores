@@ -20,6 +20,7 @@ tf = time.perf_counter()
 print("Initial Time: "+str(ti))
 print("\t> Data gathering began\n")
 sample_counter = 0
+#while loop para escribir en csv cada medicion
 while(tf-ti < TIME_THRESHOLD): 
     input = PuertoSerial.readline().decode('utf-8').replace('\r', "").replace('\n', "")
     input = input.split('\t')
