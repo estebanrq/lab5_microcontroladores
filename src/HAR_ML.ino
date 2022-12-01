@@ -14,7 +14,6 @@
 */
 
 #include <Arduino_LSM9DS1.h>
-
 #include <TensorFlowLite.h>
 #include <tensorflow/lite/micro/all_ops_resolver.h>
 #include <tensorflow/lite/micro/micro_error_reporter.h>
@@ -126,9 +125,12 @@ void loop() {
 
       // normalize the IMU data between 0 to 1 and store in the model's
       // input tensor
-      tflInputTensor->data.f[samplesRead * 6 + 0] = (x + 2000.0) / 4000.0;
-      tflInputTensor->data.f[samplesRead * 6 + 1] = (y + 2000.0) / 4000.0;
-      tflInputTensor->data.f[samplesRead * 6 + 2] = (z + 2000.0) / 4000.0;
+      tflInputTensor->data.f[samplesRead * 6 + 0] = (aX + 4.0) / 8.0;
+      tflInputTensor->data.f[samplesRead * 6 + 1] = (aY + 4.0) / 8.0;
+      tflInputTensor->data.f[samplesRead * 6 + 2] = (aZ + 4.0) / 8.0;
+      tflInputTensor->data.f[samplesRead * 6 + 3] = (gX + 2000.0) / 4000.0;
+      tflInputTensor->data.f[samplesRead * 6 + 4] = (gY + 2000.0) / 4000.0;
+      tflInputTensor->data.f[samplesRead * 6 + 5] = (gZ + 2000.0) / 4000.0;
 
       samplesRead++;
 
